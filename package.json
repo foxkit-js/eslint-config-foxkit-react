@@ -1,0 +1,73 @@
+{
+  "name": "eslint-config-foxkit-react",
+  "version": "0.0.0",
+  "description": "ESlint 9 compatible Configurations for React and Preact",
+  "type": "commonjs",
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mitsunee/eslint-config-foxkit-react.git"
+  },
+  "author": "Mitsunee",
+  "license": "MIT",
+  "scripts": {
+    "prepare": "simple-git-hooks",
+    "format": "prettier -w .",
+    "format:check": "prettier -c .",
+    "lint": "ESLINT_USE_FLAT_CONFIG=true eslint -c eslint.config.js .",
+    "lint:strict": "ESLINT_USE_FLAT_CONFIG=true eslint -c eslint.config.js --max-warnings=0 .",
+    "lint:legacy": "ESLINT_USE_FLAT_CONFIG=false eslint -c eslintrc.js .",
+    "lint:legacy:strict": "ESLINT_USE_FLAT_CONFIG=false eslint -c eslintrc.js --max-warnings=0 .",
+    "clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\"",
+    "build": "node build.mjs && clear-package-json package.json -o dist/package.json"
+  },
+  "nano-staged": {
+    "**/*.{js,json,md}": [
+      "prettier -w"
+    ]
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm nano-staged"
+  },
+  "files": [
+    "*.js",
+    "configs",
+    "legacy",
+    "rules",
+    "LICENSE"
+  ],
+  "clean-publish": {
+    "fields": [
+      "scripts",
+      "packageManager",
+      "nano-staged",
+      "simple-git-hooks"
+    ]
+  },
+  "publishConfig": {
+    "access": "public",
+    "main": "index.js"
+  },
+  "dependencies": {
+    "eslint-plugin-jsx-a11y": "^6.9.0",
+    "eslint-plugin-react": "^7.35.0",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "globals": "^15.9.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.23.1",
+    "eslint": "8.57.0",
+    "eslint-config-foxkit": "^4.0.0",
+    "eslint-config-prettier": "^9.1.0",
+    "nano-staged": "^0.8.0",
+    "prettier": "^3.3.3",
+    "react": "^18.3.1",
+    "simple-git-hooks": "^2.11.1",
+    "typescript": "~5.5.4"
+  },
+  "peerDependencies": {
+    "eslint": "8.57.0 || 9",
+    "react": "^18.3.0",
+    "typescript": "~5.5.0"
+  }
+}
