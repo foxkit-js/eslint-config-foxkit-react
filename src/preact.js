@@ -1,8 +1,7 @@
 const reactPlugin = require("eslint-plugin-react");
 const reactRules = require("./rules/react");
 const preactCompat = require("./rules/preact");
-const jsxOverride = require("./overrides/jsx");
-const jsxEsmOverride = require("./overrides/jsx-esm");
+const overrides = require("./legacy/overrides");
 
 const config = {
   plugins: ["react", "react-hooks", "jsx-a11y"],
@@ -13,7 +12,7 @@ const config = {
     reactRules,
     preactCompat
   ),
-  overrides: [jsxOverride],
+  overrides: [overrides.jsx],
   settings: {
     react: {
       pragma: "h",
@@ -23,7 +22,7 @@ const config = {
 };
 
 if (process.env.npm_package_type === "module") {
-  config.overrides.push(jsxEsmOverride);
+  config.overrides.push(overrides.jsxEsm);
 }
 
 module.exports = config;
