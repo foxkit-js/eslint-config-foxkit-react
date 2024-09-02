@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-foxkit-react",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "ESlint 9 compatible Configurations for React and Preact",
   "type": "commonjs",
   "main": "src/index.js",
