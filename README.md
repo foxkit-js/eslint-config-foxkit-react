@@ -19,7 +19,7 @@ pnpm add --save-dev eslint-config-foxkit-react eslint@8.57.0 react
 Add a [Flat Config] in your project like this:
 
 ```js
-import foxkitReact from "eslint-config-foxkit-react/configs/index.js";
+import foxkitReact from "eslint-config-foxkit-react/flat.js";
 
 export default [foxkitReact.jsx, foxkitReact.react];
 ```
@@ -31,7 +31,7 @@ You may also add other configs on top, such as [prettier], as well as your own o
 If your project does not set `"type": "module"` in package.json your config will be CommonJS instead (unless explicitly named "eslint.config.mjs"). If this is the case use `require("eslint-config-foxkit/configs")` instead.
 
 ```js
-const foxkitReact = require("eslint-config-foxkit-react/configs");
+const foxkitReact = require("eslint-config-foxkit-react/flat");
 
 module.exports = [foxkitReact.jsx, foxkitReact.react];
 ```
@@ -41,34 +41,10 @@ module.exports = [foxkitReact.jsx, foxkitReact.react];
 The base configuration is also available for [Preact], adding a few more rules to ensure compatibilty:
 
 ```js
-import foxkitReact from "eslint-config-foxkit-react/configs/index.js";
+import foxkitReact from "eslint-config-foxkit-react/flat.js";
 
 export default [foxkitReact.jsx, foxkitReact.preact];
 ```
-
-### Usage with other base configurations
-
-Alternatively you can access the rulesets by importing from `eslint-config-foxkit-react/rules`. If you are already using a base config like from your project's framework you may want to add a customized config object with our rules as well as the required plugins like this:
-
-```js
-const reactPlugin = require("eslint-plugin-react");
-const globals = require("globals");
-const reactRules = require("../rules/react");
-
-export default [
-  // your other base configs here,
-  {
-    plugins: { react: reactPlugin },
-    rules: { ...reactRules },
-    settings: {
-      react: { version: "detect" }
-    }
-  }
-  // more configs here as needed
-];
-```
-
-**Note**: This does not yet configure `eslint-plugin-jsx-a11y` and `eslint-plugin-react-hooks` which are included in our base configuration!
 
 ### Usage with new JSX Runtime
 
@@ -76,13 +52,38 @@ If your project uses the new JSX transform from React 17 or a framework that sim
 
 ```js
 import reactPlugin from "eslint-plugin-react";
-import foxkitReact from "eslint-config-foxkit-react/configs/index.js";
+import foxkitReact from "eslint-config-foxkit-react/flat.js";
 
 export default [
   foxkitReact.jsx,
   foxkitReact.react,
   reactPlugin.configs["jsx-runtime"]
 ];
+```
+
+**Note**: Since this overrides the settings object the jsx runtime config needs to be placed after the react config!
+
+### Extending for use with Frameworks
+
+You can use `tsEslint.config` to extend the base configs, for example to add the file extensions for a framework like Astro:
+
+```js
+import reactPlugin from "eslint-plugin-react";
+import foxkitReact from "eslint-config-foxkit-react/flat.js";
+import tsEslint from "typescript-eslint";
+
+/**
+ * @type {import("typescript-eslint").ConfigWithExtends}
+ */
+const jsxCfg = {
+  files: foxkitReact.jsx.files.concat("**/*.astro"),
+  extends: [foxkitReact.jsx, reactPlugin.configs["jsx-runtime"]]
+};
+foxkitReact.react.rules["react/jsx-filename-extension"][1].extensions.push(
+  ".astro"
+);
+
+export default tsEslint.config(foxkitReact.react, jsxCfg);
 ```
 
 ## Usage with the Legacy Configuration System

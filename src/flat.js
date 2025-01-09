@@ -2,8 +2,8 @@ const reactPlugin = require("eslint-plugin-react");
 const reactHooksPlugin = require("eslint-plugin-react-hooks");
 const jsxA11yPlugin = require("eslint-plugin-jsx-a11y");
 const globals = require("globals");
-const reactRules = require("../rules/react");
-const preactCompat = require("../rules/preact");
+const reactRules = require("./rules/react");
+const preactCompat = require("./rules/preact");
 
 const plugins = {
   react: reactPlugin,

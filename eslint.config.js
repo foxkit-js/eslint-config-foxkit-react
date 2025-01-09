@@ -1,6 +1,6 @@
 const foxkit = require("eslint-config-foxkit/flat");
 const prettier = require("eslint-config-prettier");
-const foxkitReact = require("./src/configs");
+const foxkitReact = require("./src/flat");
 
 console.log("Linting with Flat config");
 
