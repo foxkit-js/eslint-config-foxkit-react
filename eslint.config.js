@@ -1,4 +1,4 @@
-const foxkit = require("eslint-config-foxkit/configs/base");
+const foxkit = require("eslint-config-foxkit/flat");
 const prettier = require("eslint-config-prettier");
 const foxkitReact = require("./src/configs");
 
