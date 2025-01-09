@@ -36,15 +36,13 @@
     "rules",
     "LICENSE"
   ],
-  "clean-publish": {
+  "publishConfig": {
     "fields": [
       "scripts",
       "packageManager",
       "nano-staged",
       "simple-git-hooks"
-    ]
-  },
-  "publishConfig": {
+    ],
     "access": "public",
     "main": "index.js"
   },
