@@ -24,6 +24,7 @@ module.exports = {
    * @type {import('@typescript-eslint/utils').TSESLint.FlatConfig.Config}
    */
   react: {
+    name: "@foxkit/react",
     plugins,
     rules: Object.assign(
       {},
@@ -41,6 +42,7 @@ module.exports = {
    * @type {import('@typescript-eslint/utils').TSESLint.FlatConfig.Config}
    */
   preact: {
+    name: "@foxkit/preact",
     plugins,
     rules: Object.assign(
       {},
@@ -59,6 +61,7 @@ module.exports = {
    * @type {import('@typescript-eslint/utils').TSESLint.FlatConfig.Config}
    */
   jsx: {
+    name: "@foxkit/jsx",
     files: ["**/*.jsx", "**/*.tsx"],
     languageOptions: {
       parserOptions: { ecmaFeatures: { jsx: true } },
