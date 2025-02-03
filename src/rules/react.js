@@ -1,6 +1,7 @@
 /**
  * Base Ruleset for enabling JSX features in eslint-plugin-react and enforcing
  * the correct filename extensions. Does not include their recommended ruleset!
+ * @type {import("@typescript-eslint/utils").TSESLint.FlatConfig.Rules}
  */
 module.exports = {
   "react/jsx-key": "error",

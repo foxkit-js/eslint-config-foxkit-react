@@ -7,8 +7,9 @@
     "strict": true,
     "noEmit": true,
     "isolatedModules": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "allowJs": true
   },
-  "include": ["**/*.ts"],
+  "include": ["**/*.ts", "src/flat.js"],
   "exclude": ["node_modules", "dist"]
 }

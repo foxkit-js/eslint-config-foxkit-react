@@ -1,12 +1,19 @@
+// @ts-check
 const reactPlugin = require("eslint-plugin-react");
+// @ts-ignore
 const reactHooksPlugin = require("eslint-plugin-react-hooks");
+// @ts-ignore
 const jsxA11yPlugin = require("eslint-plugin-jsx-a11y");
 const globals = require("globals");
 const reactRules = require("./rules/react");
 const preactCompat = require("./rules/preact");
 
+/**
+ * @type {import('@typescript-eslint/utils').TSESLint.FlatConfig.Config["plugins"]}
+ */
 const plugins = {
   react: reactPlugin,
+  // @ts-ignore
   "react-hooks": reactHooksPlugin,
   "jsx-a11y": jsxA11yPlugin
 };
@@ -14,6 +21,7 @@ const plugins = {
 module.exports = {
   /**
    * Base Configuration for React developement
+   * @type {import('@typescript-eslint/utils').TSESLint.FlatConfig.Config}
    */
   react: {
     plugins,
@@ -30,6 +38,7 @@ module.exports = {
   },
   /**
    * Base Configuration for Preact developement
+   * @type {import('@typescript-eslint/utils').TSESLint.FlatConfig.Config}
    */
   preact: {
     plugins,
@@ -47,6 +56,7 @@ module.exports = {
   },
   /**
    * Configuration for enabling JSX features in ESLint
+   * @type {import('@typescript-eslint/utils').TSESLint.FlatConfig.Config}
    */
   jsx: {
     files: ["**/*.jsx", "**/*.tsx"],

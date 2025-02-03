@@ -1,5 +1,6 @@
 /**
  * Compatibility ruleset for usage with Preact
+ * @type {import("@typescript-eslint/utils").TSESLint.FlatConfig.Rules}
  */
 module.exports = {
   "react/no-did-mount-set-state": "error",
