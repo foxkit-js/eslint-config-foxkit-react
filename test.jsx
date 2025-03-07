@@ -2,6 +2,10 @@
 const React = require("react");
 
 function TestComponent({ name }) {
+  React.useEffect(() => {
+    console.log(name);
+  }, [name]);
+
   return <p>Hello, {name || "World"}!</p>;
 }
 
