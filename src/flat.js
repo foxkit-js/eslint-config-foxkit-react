@@ -29,7 +29,7 @@ module.exports = {
     rules: Object.assign(
       {},
       reactPlugin.configs.recommended.rules,
-      reactHooksPlugin.configs.recommended.rules,
+      reactHooksPlugin.configs.flat.recommended.rules,
       jsxA11yPlugin.configs.recommended.rules,
       reactRules
     ),
@@ -47,7 +47,7 @@ module.exports = {
     rules: Object.assign(
       {},
       reactPlugin.configs.recommended.rules,
-      reactHooksPlugin.configs.recommended.rules,
+      reactHooksPlugin.configs.flat.recommended.rules,
       jsxA11yPlugin.configs.recommended.rules,
       reactRules,
       preactCompat
